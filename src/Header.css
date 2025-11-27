@@ -1,0 +1,12 @@
+/* Header.css */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-logo {
+    width: 150px;      
+    height: 60px;      
+    object-fit: cover;
+    border-radius: 10px;  
+}
