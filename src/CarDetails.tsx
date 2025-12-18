@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Car, FuelTypeMap, BodyTypeMap } from "./Models/Car";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import api from "./api";
+
 
 export default function CarDetails() {
   const { id } = useParams<{ id: string }>();
@@ -12,7 +14,7 @@ export default function CarDetails() {
   useEffect(() => {
     const fetchCarById = async () => {
       try {
-        const response = await axios.get(`https://localhost:7135/api/Cars/${id}`);
+        const response = await api.get(`/Cars/${id}`);
         const data = response.data;
 
         setCar({

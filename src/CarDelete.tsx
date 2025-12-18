@@ -1,5 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import api from "./api";
+
 
 export default function CarDelete() {
   const { id } = useParams<{ id: string }>();
@@ -7,7 +9,7 @@ export default function CarDelete() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`https://localhost:7135/api/Cars/${id}`);
+      await api.delete(`/Cars/${id}`);
       navigate("/");
     } catch {
       alert("Error deleting car");

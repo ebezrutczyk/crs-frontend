@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Car, FuelType, BodyType, FuelTypeMap, BodyTypeMap } from './Models/Car';
 import axios from 'axios';
+import api from "./api";
+
+
 
 const FuelTypeReverseMap: Record<FuelType, number> = {
   Petrol: 0,
@@ -18,6 +21,7 @@ const BodyTypeReverseMap: Record<BodyType, number> = {
   Roadster: 4
 };
 
+
 export default function CarEdit() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -28,7 +32,7 @@ export default function CarEdit() {
   useEffect(() => {
     const fetchCarById = async () => {
       try {
-        const response = await axios.get(`https://localhost:7135/api/Cars/${id}`);
+        const response = await api.get(`/Cars/${id}`);
         const carData = response.data;
 
         setCar({
@@ -71,7 +75,7 @@ export default function CarEdit() {
           bodyType: BodyTypeReverseMap[car.bodyType]
         };
 
-        await axios.put(`https://localhost:7135/api/Cars/${id}`, carToSave);
+        await api.put(`/Cars/${id}`, carToSave);
         navigate('/');
 
       } catch {

@@ -3,6 +3,7 @@ import axios from 'axios';
 import {  Car, FuelTypeMap } from './Models/Car';
 import { NavLink } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
+import api from "./api";
 
 export default function CarList() {
   const [cars, setCars] = useState<Car[]>([]);
@@ -23,7 +24,9 @@ export default function CarList() {
   useEffect(() => {
     setLoading(true); 
     
-    axios.get<Car[]>('https://localhost:7135/api/Cars/')
+
+    
+    api.get<Car[]>('/Cars')
         .then((response) => {
             setCars(response.data);
         })

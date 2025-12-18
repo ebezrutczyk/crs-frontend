@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Car, FuelType, BodyType, FuelTypeMap, BodyTypeMap } from './Models/Car';
 import axios from 'axios';
+import api from "./api";
+
+
 
 const FuelTypeReverseMap: Record<FuelType, number> = {
   [FuelType.Petrol]: 0,
@@ -70,7 +73,7 @@ export default function CarAdd() {
     };
 
     try {
-      await axios.post("https://localhost:7135/api/Cars", carToSave);
+      await api.post("/Cars", carToSave);
       navigate("/");
     } catch (err) {
       alert("Error adding car");

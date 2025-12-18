@@ -6,6 +6,8 @@ import CarEdit from "./CarEdit";
 import NotFound from "./NotFound";
 import CarDelete from "./CarDelete";
 import CarAdd from "./CarAdd";
+import RegisterPage from "./AccountRegister";
+import LoginPage from "./AccountLogin";
 
 
 const routes: RouteObject[] = [
@@ -19,7 +21,9 @@ const routes: RouteObject[] = [
             {path: 'delete/:id', element: <CarDelete />},
             {path: 'not-found', element: <NotFound />},
             {path: '*', element: <Navigate replace to='/not-found' />},
-            {path: 'cars/add', element: <CarAdd />}
+            {path: 'cars/add', element: <CarAdd />},
+            {path: '/login', element: <LoginPage />},
+            {path: '/register', element: <RegisterPage />}
         ]
     }
 ]
